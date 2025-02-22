@@ -2,4 +2,4 @@
 Script to import details
 
 
-Node v22
+Node v22.14.0
