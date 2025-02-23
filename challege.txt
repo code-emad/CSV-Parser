@@ -44,11 +44,11 @@ If you have time, provide an API to return a list of products with filter option
 ----------------------
 Example CSV file...
 
-SKU,Colour,Size
+SKU,Colour,Size -skipped title?
 1,C1,S1
-1,C1,S1
-2,C1,
-3,,S3
+1,C1,S1 -skipped duplicate
+2,C1, -skipped incomplete
+3,,S3 -skipped incomplete
 4,C1,S4
 5,C1,S5
 6,C1,S6
@@ -58,9 +58,9 @@ SKU,Colour,Size
  
 Which should generate the following first time it is run:
 
-Number of products created: 6
+Number of products created: 6 -should this be 7?
 Number of products unchanged: 0
-Number of rows skipped: 4
+Number of rows skipped: 4 - should this be 3?
 
 and on subsequent occasions:
 
