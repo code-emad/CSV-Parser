@@ -1,13 +1,19 @@
-
+const Papa = require('papaparse')
+const fs = require('fs')
 
 function returnNumber() {
     return 123
 }
 
+//read input csv and return arrat of objects
+function readInputCSV(inputCSV) {
+    if (inputCSV === undefined) {return "No input file specified"}
 
-console.log(returnNumber(
+    
+     return []
+}
 
-))
 
 
-module.exports = {returnNumber}
+
+module.exports = {returnNumber, readInputCSV}
