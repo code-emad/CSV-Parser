@@ -1,4 +1,4 @@
-const {readInputCSV} = require('../csvParser')
+const {readInputCSV, transformCSVtoJSON} = require('../csvParser')
 const path = require('path')
 
 const inputCSV1 = path.join(__dirname, '../CSV_files/1.csv')
@@ -25,5 +25,11 @@ describe('readInputCSV', () => {
         const data = await readInputCSV(inputCSV10); // Await the Promise
         expect(data.length).toBe(10);
     });
+});
 
+describe('transformCSVtoJSON', () => {
+    it('return an object', () => {
+        expect(typeof transformCSVtoJSON()).toBe('object');
+    });
+    
 });

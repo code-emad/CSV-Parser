@@ -14,10 +14,17 @@ function readInputCSV(inputCSV) {
       .pipe(csv())
       .on("data", (data) => inputCSVArray.push(data))
       .on("end", () => {
-        console.log(inputCSVArray);
         resolve(inputCSVArray);
       });
   });
 }
 
-module.exports = { readInputCSV };
+function transformCSVtoJSON() {
+    return {}
+}
+
+
+
+
+
+module.exports = { readInputCSV, transformCSVtoJSON };
