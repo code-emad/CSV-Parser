@@ -34,12 +34,12 @@ function processCSVtoJSON(inputArray) {
   const seenSKUs = new Set(); // To track unique SKUs
 
   inputArray.forEach((row, index) => {
-    const { SKU } = row;
+    const { SKU, Colour, Size } = row;
 
     if (seenSKUs.has(SKU)) {
       processedResult.numberOfRowsSkipped++;
       processedResult.skippedRows.push(`Row ${index + 1} skipped: Duplicate SKU (${SKU})`);
-    } else {
+    } else if (SKU && Colour && Size) {
       processedResult.products.push(row);
       seenSKUs.add(SKU);
       processedResult.createdProducts++;
