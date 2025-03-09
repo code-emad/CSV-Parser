@@ -19,12 +19,35 @@ function readInputCSV(inputCSV) {
   });
 }
 
-function transformCSVtoJSON() {
-    return {}
+function processCSVtoJSON(inputArray) {
+  if (inputArray === undefined) {
+    return {};
+  }
+
+  const processedResult = {
+    products: [],
+    createdProducts: 0,
+    numberOfRowsSkipped: 0,
+    skippedRows: []
+  };
+
+  const seenSKUs = new Set(); // To track unique SKUs
+
+  inputArray.forEach((row, index) => {
+    const { SKU } = row;
+
+    if (seenSKUs.has(SKU)) {
+      processedResult.numberOfRowsSkipped++;
+      processedResult.skippedRows.push(`Row ${index + 1} skipped: Duplicate SKU (${SKU})`);
+    } else {
+      processedResult.products.push(row);
+      seenSKUs.add(SKU);
+      processedResult.createdProducts++;
+    }
+  });
+
+  return processedResult;
 }
 
 
-
-
-
-module.exports = { readInputCSV, transformCSVtoJSON };
+module.exports = { readInputCSV, processCSVtoJSON };
