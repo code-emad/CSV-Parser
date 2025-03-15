@@ -61,6 +61,11 @@ describe('transformCSVtoJSON', () => {
         ]
         expect(processCSVtoJSON(data).products).toEqual(result);
     });
+    it('inputCSV2dup.numberOfSkippedRows should return 2', async () => {
+        const data = await readInputCSV(inputCSV2dup); 
+        const result = 1
+        expect(processCSVtoJSON(data).numberOfSkippedRows).toEqual(result);
+    });
     it('inputCSV10 should return an array of 10 objects', async () => {
         const data = await readInputCSV(inputCSV10); 
         const result = [
