@@ -27,7 +27,7 @@ function processCSVtoJSON(inputArray) {
   const processedResult = {
     products: [],
     createdProducts: 0,
-    numberOfRowsSkipped: 0,
+    numberOfSkippedRows: 0,
     skippedRows: []
   };
 
@@ -37,15 +37,19 @@ function processCSVtoJSON(inputArray) {
     const { SKU, Colour, Size } = row;
 
     if (seenSKUs.has(SKU)) {
-      processedResult.numberOfRowsSkipped++;
+      processedResult.numberOfSkippedRows++;
       processedResult.skippedRows.push(`Row ${index + 1} skipped: Duplicate SKU (${SKU})`);
-    } else if (SKU && Colour && Size) {
+    } else if (!SKU || !Colour || !Size) {
+      processedResult.numberOfSkippedRows++;
+      processedResult.skippedRows.push(`Row ${index + 1} skipped: Incomplete data`);
+    }
+    else if (SKU && Colour && Size) {
       processedResult.products.push(row);
       seenSKUs.add(SKU);
       processedResult.createdProducts++;
     }
   });
-
+  console.log(processedResult)
   return processedResult;
 }
 

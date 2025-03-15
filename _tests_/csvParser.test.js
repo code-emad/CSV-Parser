@@ -88,4 +88,9 @@ describe('transformCSVtoJSON', () => {
         ]
         expect(processCSVtoJSON(data).products).toEqual(result);
     });
+    it('inputCSV2missing.skippedRows should return 1', async () => {
+        const data = await readInputCSV(inputCSV2missing); 
+        const result = 1
+        expect(processCSVtoJSON(data).numberOfSkippedRows).toEqual(result);
+    });
 });

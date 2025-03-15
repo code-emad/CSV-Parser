@@ -44,7 +44,7 @@ If you have time, provide an API to return a list of products with filter option
 ----------------------
 Example CSV file...
 
-SKU,Colour,Size -skipped title?
+SKU,Colour,Size
 1,C1,S1
 1,C1,S1 -skipped duplicate
 2,C1, -skipped incomplete
