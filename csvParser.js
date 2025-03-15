@@ -1,6 +1,8 @@
 const Papa = require("papaparse");
 const fs = require("fs");
 const csv = require("csv-parser");
+const path = require('path');
+
 
 //read input csv and return arrat of objects
 function readInputCSV(inputCSV) {
@@ -24,14 +26,21 @@ function processCSVtoJSON(inputArray) {
     return {};
   }
 
+  const filePath = path.join(__dirname, 'processedProducts.json');
+  let existingProducts = [];
+
+  if (fs.existsSync(filePath)) {
+    existingProducts = require('./processedProducts.json')
+  }
+
   const processedResult = {
-    products: [],
+    products: [...existingProducts],
     createdProducts: 0,
     numberOfSkippedRows: 0,
     skippedRows: []
   };
 
-  const seenSKUs = new Set(); // To track unique SKUs
+  const seenSKUs = new Set(existingProducts.map(product => product.SKU)); // To track unique SKUs
 
   inputArray.forEach((row, index) => {
     const { SKU, Colour, Size } = row;
@@ -49,8 +58,9 @@ function processCSVtoJSON(inputArray) {
       processedResult.createdProducts++;
     }
   });
+
+  fs.writeFileSync('./processedProducts.json', JSON.stringify(processedResult.products, null, 2));
   return processedResult;
 }
-
 
 module.exports = { readInputCSV, processCSVtoJSON };

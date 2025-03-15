@@ -7,6 +7,6 @@
     "papaparse": "^5.5.2"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --runInBand"
   }
 }
