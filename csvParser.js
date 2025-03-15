@@ -49,7 +49,6 @@ function processCSVtoJSON(inputArray) {
       processedResult.createdProducts++;
     }
   });
-  console.log(processedResult)
   return processedResult;
 }
 

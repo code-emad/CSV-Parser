@@ -6,6 +6,7 @@ const inputCSV2 = path.join(__dirname, '../CSV_files/2.csv')
 const inputCSV2dup = path.join(__dirname, '../CSV_files/2dup.csv')
 const inputCSV10 = path.join(__dirname, '../CSV_files/10.csv')
 const inputCSV2missing = path.join(__dirname, '../CSV_files/2missing.csv')
+const challengecsv = path.join(__dirname, '../CSV_files/challengecsv.csv')
 
 describe('readInputCSV', () => {
     it('if input is undefined, then a string should be returned to say there is no input', () => {
@@ -98,4 +99,20 @@ describe('transformCSVtoJSON', () => {
         const result = 1
         expect(processCSVtoJSON(data).numberOfSkippedRows).toEqual(result);
     });
+    it('challengecsv should return 7 objects', async () => {
+        const data = await readInputCSV(challengecsv); 
+        const result = [
+            {SKU: "1", Colour: "C1", Size: "S1"},
+            {SKU: "4", Colour: "C1", Size: "S4"},
+            {SKU: "5", Colour: "C1", Size: "S5"},
+            {SKU: "6", Colour: "C1", Size: "S6"},
+            {SKU: "7", Colour: "C1", Size: "S7"},
+            {SKU: "8", Colour: "C1", Size: "S8"},
+            {SKU: "9", Colour: "C1", Size: "S9"}
+        ]
+        expect(processCSVtoJSON(data).products).toEqual(result);
+        expect(processCSVtoJSON(data).createdProducts).toEqual(7);
+        expect(processCSVtoJSON(data).numberOfSkippedRows).toEqual(3);
+    });
+
 });
