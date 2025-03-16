@@ -135,7 +135,7 @@ describe('transformCSVtoJSON', () => {
             { SKU: "SKU1", Colour: "Red", Size: "Small" },
             { SKU: "SKU2", Colour: "Black", Size: "Medium" }
         ];
-        const input2 = [
+        const result2 = [
             { SKU: "SKU1", Colour: "Red", Size: "Small" },
             { SKU: "SKU2", Colour: "Black", Size: "Medium" },
             { SKU: "SKU3", Colour: "Blue", Size: "Large" }
@@ -150,10 +150,45 @@ describe('transformCSVtoJSON', () => {
     
         // Second run
         const secondRun = await processCSVtoJSON(data2);
-        expect(secondRun.products).toEqual(input2);
+        expect(secondRun.products).toEqual(result2);
         expect(secondRun.createdProducts).toEqual(1);
         expect(secondRun.numberOfSkippedRows).toEqual(1);
         console.log("should run processCSVtoJSON twice sequentially --secondRun", secondRun)
+
+    });
+    it('should run processCSVtoJSON thrice sequentially', async () => {
+        const data1 = await readInputCSV(inputSequential1); 
+        const data2 = await readInputCSV(inputSequential2); 
+        const result1 = [
+            { SKU: "SKU1", Colour: "Red", Size: "Small" },
+            { SKU: "SKU2", Colour: "Black", Size: "Medium" }
+        ];
+        const result2 = [
+            { SKU: "SKU1", Colour: "Red", Size: "Small" },
+            { SKU: "SKU2", Colour: "Black", Size: "Medium" },
+            { SKU: "SKU3", Colour: "Blue", Size: "Large" }
+
+        ];
+        // First run
+        const firstRun = await processCSVtoJSON(data1);
+        expect(firstRun.products).toEqual(result1);
+        expect(firstRun.createdProducts).toEqual(2);
+        expect(firstRun.numberOfSkippedRows).toEqual(0);
+        console.log("should run processCSVtoJSON twice sequentially --firstRun", firstRun)
+    
+        // Second run
+        const secondRun = await processCSVtoJSON(data2);
+        expect(secondRun.products).toEqual(result2);
+        expect(secondRun.createdProducts).toEqual(1);
+        expect(secondRun.numberOfSkippedRows).toEqual(1);
+        console.log("should run processCSVtoJSON twice sequentially --secondRun", secondRun)
+
+        // Third run
+        const thirdRun = await processCSVtoJSON(data2);
+        expect(thirdRun.products).toEqual(result2);
+        expect(thirdRun.createdProducts).toEqual(0);
+        expect(thirdRun.numberOfSkippedRows).toEqual(2);
+        console.log("should run processCSVtoJSON twice sequentially --thirdRun", secondRun)
 
     });
     it('final test - challengecsv ran twice', async () => {
