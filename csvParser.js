@@ -30,7 +30,6 @@ function processCSVtoJSON(inputArray) {
   let existingProducts = [];
 
   if (fs.existsSync(filePath)) {
-    // **Fix: Read fresh data instead of using require() (to avoid cache issues)**
     const rawData = fs.readFileSync(filePath);
     existingProducts = rawData.length ? JSON.parse(rawData) : [];
   }
@@ -42,9 +41,7 @@ function processCSVtoJSON(inputArray) {
     skippedRows: []
   };
 
-
   const seenSKUs = new Set(existingProducts.map(product => product.SKU)); // To track unique SKUs
-  console.log(1, processedResult, seenSKUs)
   inputArray.forEach((row, index) => {
     const { SKU, Colour, Size } = row;
 
@@ -62,7 +59,7 @@ function processCSVtoJSON(inputArray) {
       processedResult.createdProducts++;
     }
   });
-  console.log(2, processedResult, seenSKUs)
+
   fs.writeFileSync('./processedProducts.json', JSON.stringify(processedResult.products, null, 2));
   return processedResult;
 }
