@@ -4,7 +4,7 @@ const csv = require("csv-parser");
 const path = require('path');
 
 
-//read input csv and return arrat of objects
+//read input csv and return array of objects
 function readInputCSV(inputCSV) {
   if (inputCSV === undefined) {
     return "No input file specified";
