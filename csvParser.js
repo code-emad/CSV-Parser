@@ -46,7 +46,6 @@ function processCSVtoJSON(inputArray) {
     const { SKU, Colour, Size } = row;
 
     if (seenSKUs.has(SKU)) {
-      console.log(`Skipping SKU: ${SKU}`);
       processedResult.numberOfSkippedRows++;
       processedResult.skippedRows.push(`Row ${index + 1} skipped: Duplicate SKU (${SKU})`);
     } else if (!SKU || !Colour || !Size) {
