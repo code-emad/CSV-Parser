@@ -2,7 +2,7 @@ const Papa = require("papaparse");
 const fs = require("fs");
 const csv = require("csv-parser");
 const path = require('path');
-
+// comment for diff purposes
 
 //read input csv and return array of objects
 function readInputCSV(inputCSV) {
