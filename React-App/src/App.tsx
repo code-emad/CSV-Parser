@@ -1,6 +1,10 @@
 import React, { useRef } from "react";
 import './App.css';
-import {readInputCSV, processCSVtoJSON} from './utils/csvParser'
+import {readInputCSV, processCSVtoJSON} from './utils/csvParser' // processCSVToJSON isn't being used
+
+/**
+ * Is this front-end repo being used? Why is it included in the PR?
+ */
 
 // comment for diff
 const App: React.FC = () => {
@@ -12,7 +16,7 @@ const App: React.FC = () => {
       console.log("Selected file:", file.name);
       // You can add logic here to process the file
 
-      const data = await readInputCSV(file)
+      const data = await readInputCSV(file) // Is this React-App unfinished?
 
     }
   };

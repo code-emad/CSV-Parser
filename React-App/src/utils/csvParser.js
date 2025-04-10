@@ -3,6 +3,11 @@ const fs = require("fs");
 const csv = require("csv-parser");
 const path = require('path');
 
+/** 
+ * Did you copy your back-end part into the front-end
+ * and then keep the back-end separate? There are package.json files everywhere
+ */
+
 
 //read input csv and return array of objects
 function readInputCSV(inputCSV) {

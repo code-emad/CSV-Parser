@@ -1,4 +1,4 @@
-const Papa = require("papaparse");
+const Papa = require("papaparse"); // This dependency is unused?
 const fs = require("fs");
 const csv = require("csv-parser");
 const path = require('path');
@@ -6,12 +6,12 @@ const path = require('path');
 
 //read input csv and return array of objects
 function readInputCSV(inputCSV) {
-  if (inputCSV === undefined) {
+  if (inputCSV === undefined) { // what if inputCSV is null?
     return "No input file specified";
   }
 
-  return new Promise((resolve, reject) => {
-    const inputCSVArray = [];
+  return new Promise((resolve, reject) => { // There's no error handling for the reject case. What happens on an error event?
+     const inputCSVArray = [];
     fs.createReadStream(inputCSV)
       .pipe(csv())
       .on("data", (data) => inputCSVArray.push(data))
@@ -22,7 +22,7 @@ function readInputCSV(inputCSV) {
 }
 
 function processCSVtoJSON(inputArray) {
-  if (inputArray === undefined) {
+  if (inputArray === undefined) { // what if input array is null?
     return {};
   }
 
@@ -41,7 +41,7 @@ function processCSVtoJSON(inputArray) {
     skippedRows: []
   };
 
-  const seenSKUs = new Set(existingProducts.map(product => product.SKU)); // To track unique SKUs
+  const seenSKUs = new Set(existingProducts.map(product => product.SKU)); // To track unique SKUs *
   inputArray.forEach((row, index) => {
     const { SKU, Colour, Size } = row;
 
