@@ -174,7 +174,7 @@ describe("transformCSVtoJSON", () => {
     expect(thirdRun.createdProducts).toEqual(0);
     expect(thirdRun.numberOfSkippedRows).toEqual(2);
   });
-  it("final test - challengecsv ran twice", async () => {
+  it("final test - challengecsv ran twice", async () => { // comment for inline diff
     const data1 = await readInputCSV(challengecsv);
     const data2 = await readInputCSV(challengecsv);
     const result = [
