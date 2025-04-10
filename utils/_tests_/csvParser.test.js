@@ -2,7 +2,7 @@ const { readInputCSV, processCSVtoJSON } = require("../csvParser");
 const path = require("path");
 const fs = require("fs");
 const filePath = path.join(__dirname, "../processedProducts.json");
-
+// alot of repeated code here
 const inputCSV1 = path.join(__dirname, "../CSV_files/1.csv");
 const inputCSV2 = path.join(__dirname, "../CSV_files/2.csv");
 const inputCSV2dup = path.join(__dirname, "../CSV_files/2dup.csv");
@@ -20,13 +20,13 @@ beforeEach(async () => {
   }
 });
 
-describe("readInputCSV", () => {
+describe("readInputCSV", () => { // for these tests I would expect checking the output to prevent false positives
   it("if input is undefined, then a string should be returned to say there is no input", () => {
-    expect(typeof readInputCSV(undefined)).toBe(typeof "string");
+    expect(typeof readInputCSV(undefined)).toBe(typeof "string"); // should test the returned string rather than the type. readInputCSV should be awaited?
   });
   it("if valid input is defined, then an array should be returned", async () => {
     const data = await readInputCSV(inputCSV1); // Await the Promise
-    expect(Array.isArray(data)).toBe(true);
+    expect(Array.isArray(data)).toBe(true); 
   });
   it("inputCSV1 should return an array with length of 1", async () => {
     const data = await readInputCSV(inputCSV1); // Await the Promise
@@ -42,18 +42,18 @@ describe("readInputCSV", () => {
   });
 });
 
-describe("transformCSVtoJSON", () => {
+describe("transformCSVtoJSON", () => {  // Your using processCSVtoJSON to test transformCSVtoJSON so tests are being run in isolation. If processCSVtoJSON had an issue your tests could break 
   it("return an object", () => {
     expect(typeof processCSVtoJSON()).toBe("object");
   });
   it("inputCSV1 should return an array of 1 object", async () => {
-    const data = await readInputCSV(inputCSV1);
-    const result = [{ SKU: "SKU1", Colour: "Red", Size: "Small" }];
+    const data = await readInputCSV(inputCSV1); 
+    const result = [{ SKU: "SKU1", Colour: "Red", Size: "Small" }]; // result is a bad name for your expected data. Makes more sense to have "result" equal to the result of running readInputCSV
     expect(processCSVtoJSON(data).products).toEqual(result);
   });
   it("the result should have a key to identify created products, for inputCSV1 this should be 1", async () => {
-    const data = await readInputCSV(inputCSV1);
-    expect(processCSVtoJSON(data).createdProducts).toEqual(1);
+    const data = await readInputCSV(inputCSV1); 
+    expect(processCSVtoJSON(data).createdProducts).toEqual(1); // Alot of these tests are using the same file. Could merge them into one test and have multiple expects
   });
   it("inputCSV2 should return an array of 2 objects", async () => {
     const data = await readInputCSV(inputCSV2);
@@ -198,7 +198,7 @@ describe("transformCSVtoJSON", () => {
     expect(secondRun.numberOfSkippedRows).toEqual(10);
   });
 });
-//     it('final test - challengecsv ran twice', async () => {
+//     it('final test - challengecsv ran twice', async () => {  
 //         const data = await readInputCSV(challengecsv);
 //         const result = [
 //             {SKU: "1", Colour: "C1", Size: "S1"},
