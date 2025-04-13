@@ -5,6 +5,8 @@ To refresh my JavaScript / writing script skils, I decided to complete a tech te
 
 The task is to create a script to parse a CSV and output to a JSON. The full challenge can read within the `challenge.txt` document.
 
+Note: I did spend beyond 2 hours on this script which is above the recommended time.
+
 ## Setup
 In order to make a local clone of this project, within your terminal you will need to run `git clone https://github.com/code-emad/CSV-Parser.git`
 
@@ -33,6 +35,7 @@ To resolve this, I adjusted how modules were imported and restructured the logic
 ## Further Improvements
 - Handle product updates.
 - Error handling test cases.
+- Better memory handling i.e. avoid loading the entire file in to memory.
 
 
 #### Staying focused
