@@ -30,7 +30,7 @@ While writing tests, I encountered inconsistent results—some tests passed indi
 
 To resolve this, I adjusted how modules were imported and restructured the logic slightly to avoid state retention between tests
 
-##### Staying focused
+#### Staying focused
 Whilst I do enjoy writing scripts, an issue for me was sitting down and getting on with it. I found that after work I was too tired to progress with it and on the weekends I was procrastinating. Sometimes when I came to an issue, if I did not find the answer quickly I would get distracted and want to look at something else. I don't think it helped that it was good weather during the weekends that I worked on this. This made me come back to this project periods of leave which meant I had to refresh my memory before carrying on.
 
 To try and reduce this, I tried to remove distraction froms my room and keep my workspace in a clean tidy manner. This helped me to an extent and when I got started I was able to get chunks done.
