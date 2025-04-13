@@ -11,7 +11,7 @@ function readInputCSV(inputCSV) {
   }
 
   return new Promise((resolve, reject) => {
-    const inputCSVArray = [];
+    const csvInputs = [];
   
     const stream = fs.createReadStream(inputCSV)
       .on("error", (err) => {
@@ -20,9 +20,9 @@ function readInputCSV(inputCSV) {
   
     stream
       .pipe(csv())
-      .on("data", (data) => inputCSVArray.push(data))
+      .on("data", (data) => csvInputs.push(data))
       .on("end", () => {
-        resolve(inputCSVArray);
+        resolve(csvInputs);
       })
       .on("error", (err) => {
         reject(new Error(`Failed to parse CSV file: ${err.message}`));
