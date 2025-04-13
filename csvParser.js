@@ -1,6 +1,7 @@
 const fs = require("fs");
 const csv = require("csv-parser");
 const path = require('path');
+const file = path.join(__dirname, 'inputCSV.csv')
 
 
 //read input csv and return array of objects
@@ -61,5 +62,15 @@ function processCSVtoJSON(inputArray) {
   fs.writeFileSync('./processedProducts.json', JSON.stringify(processedResult.products, null, 2));
   return processedResult;
 }
+
+readInputCSV(file)
+  .then(processCSVtoJSON)
+  .then(result => {
+    console.log("Function run complete!");
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+
 
 module.exports = { readInputCSV, processCSVtoJSON };
