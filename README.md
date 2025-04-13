@@ -31,6 +31,8 @@ While writing tests, I encountered inconsistent results—some tests passed indi
 To resolve this, I adjusted how modules were imported and restructured the logic slightly to avoid state retention between tests.
 
 ## Further Improvements
+- Handle product updates.
+- Error handling test cases.
 
 
 #### Staying focused
