@@ -28,7 +28,10 @@ The tests are built using Jest, and cover core functionality such as CSV reading
 #### Caching
 While writing tests, I encountered inconsistent results—some tests passed individually but failed when run together. After debugging with console logs and researching the issue (including asking ChatGPT), I discovered the problem stemmed from module caching when using require.
 
-To resolve this, I adjusted how modules were imported and restructured the logic slightly to avoid state retention between tests
+To resolve this, I adjusted how modules were imported and restructured the logic slightly to avoid state retention between tests.
+
+## Further Improvements
+
 
 #### Staying focused
 Whilst I do enjoy writing scripts, an issue for me was sitting down and getting on with it. I found that after work I was too tired to progress with it and on the weekends I was procrastinating. Sometimes when I came to an issue, if I did not find the answer quickly I would get distracted and want to look at something else. I don't think it helped that it was good weather during the weekends that I worked on this. This made me come back to this project periods of leave which meant I had to refresh my memory before carrying on.
