@@ -58,9 +58,9 @@ SKU,Colour,Size
  
 Which should generate the following first time it is run:
 
-Number of products created: 6 -should this be 7?
+Number of products created: 7
 Number of products unchanged: 0
-Number of rows skipped: 4 - should this be 3?
+Number of rows skipped: 3
 
 and on subsequent occasions:
 
