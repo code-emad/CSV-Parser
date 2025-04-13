@@ -6,7 +6,6 @@ To refresh my JavaScript / writing script skils, I decided to complete a tech te
 The task is to create a script to parse a CSV and output to a JSON. The full challenge can read within the `challenge.txt` document.
 
 ## Setup
-
 In order to make a local clone of this project, within your terminal you will need to run `git clone https://github.com/code-emad/CSV-Parser.git`
 
 Once the files have been cloned, you will need change directory into the project directory and run `npm install` which will install the dependencies listed within the package.json file. 
@@ -21,11 +20,12 @@ After a successful run the script will create a json file named `processedProduc
 *The CSV must have the columns for SKU,Colour,Size
 
 ## Tests
-Relevent tests have been created and are within the `__tests__` folder. Tests can be run with the command `npm run test`.
+Relevent tests have been created and are within the `_tests_` folder. Tests can be run with the command `npm run test`.
 
 The tests are built using Jest, and cover core functionality such as CSV reading and product processing logic.
 
 ## Challenges Faced
+<u>hello world</u>
 <in>Caching</in>
 While writing tests, I encountered inconsistent results—some tests passed individually but failed when run together. After debugging with console logs and researching the issue (including asking ChatGPT), I discovered the problem stemmed from module caching when using require.
 
