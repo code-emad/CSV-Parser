@@ -21,9 +21,17 @@ beforeEach(async () => {
 });
 
 describe("readInputCSV", () => {
-  it("if input is undefined, then a string should be returned to say there is no input", () => {
-    expect(typeof readInputCSV(undefined)).toBe(typeof "string");
+  it.only("returns an error message if input is null or undefined", async () => {
+    const result1 = await readInputCSV(undefined);
+    const result2 = await readInputCSV(null);
+  
+    expect(typeof result1).toBe("string");
+    expect(result1).toBe("No input file specified");
+  
+    expect(typeof result2).toBe("string");
+    expect(result2).toBe("No input file specified");
   });
+  
   it("if valid input is defined, then an array should be returned", async () => {
     const data = await readInputCSV(inputCSV1); // Await the Promise
     expect(Array.isArray(data)).toBe(true);

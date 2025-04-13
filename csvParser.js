@@ -6,8 +6,8 @@ const file = path.join(__dirname, 'inputCSV.csv')
 
 //read input csv and return array of objects
 function readInputCSV(inputCSV) {
-  if (inputCSV === undefined) {
-    return "No input file specified";
+  if (!inputCSV) {
+    return Promise.resolve("No input file specified");
   }
 
   return new Promise((resolve, reject) => {
@@ -63,14 +63,17 @@ function processCSVtoJSON(inputArray) {
   return processedResult;
 }
 
-readInputCSV(file)
-  .then(processCSVtoJSON)
-  .then(result => {
-    console.log("Function run complete!");
-  })
-  .catch(error => {
-    console.error("Error:", error);
-  });
+if (require.main === module) {
+  readInputCSV(file)
+    .then(processCSVtoJSON)
+    .then(result => {
+      console.log("Function run complete!");
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+}
+
 
 
 module.exports = { readInputCSV, processCSVtoJSON };
