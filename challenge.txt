@@ -65,5 +65,5 @@ Number of rows skipped: 3
 and on subsequent occasions:
 
 Number of products created: 0
-Number of products unchanged: 6
-Number of rows skipped: 4
+Number of products unchanged: 7
+Number of rows skipped: 3

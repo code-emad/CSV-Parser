@@ -21,7 +21,7 @@ beforeEach(async () => {
 });
 
 describe("readInputCSV", () => {
-  it.only("returns an error message if input is null or undefined", async () => {
+  it("returns an error message if input is null or undefined", async () => {
     const result1 = await readInputCSV(undefined);
     const result2 = await readInputCSV(null);
   
@@ -49,6 +49,8 @@ describe("readInputCSV", () => {
     expect(data.length).toBe(10);
   });
 });
+
+
 
 describe("transformCSVtoJSON", () => {
   it("return an object", () => {
