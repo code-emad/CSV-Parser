@@ -22,12 +22,12 @@ Once the script has been run, a json file will be created named `processedProduc
 Relevent tests have been created and are within the `__tests__` folder. Tests can be run with the command `npm run test`.
 
 ## Challenges Faced
-### Caching
+<u>Caching</u>
 When writing the tests, I found that some tests were failing when ran together but individually they passed. It took me a while to discover what went wrong as I initially thought that there was an error with the tests that I wrote. After some debugging using console logs I realised this was not the case. 
 
 I did some googling / a chatgpt query and discovered it was to do with the function that I wrote. I learnt that there can be some caching issues when using function `require`. To overcome this I replaced `require` with `path.join`. 
 
-### Sitting down and working on the script
+<u>itting down and working on the script</u>
 Whilst I do enjoy writing scripts, an issue for me was sitting down and getting on with it. I found that after work I was too tired to progress with it and on the weekends I was procrastinating. Sometimes when I came to an issue, if I did not find the answer quickly I would get distracted and want to look at something else. I don't think it helped that it was good weather during the weekends that I worked on this. This made me come back to this project periods of leave which meant I had to refresh my memory before carrying on.
 
 To try and reduce this, I tried to remove distraction froms my room and keep my workspace in a clean tidy manner. This helped me to an extent and when I got started I was able to get chunks done.
